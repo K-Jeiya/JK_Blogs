@@ -1,23 +1,46 @@
-<!-- Similar to login.html, but change the title and form -->
-<div class="auth-card">
-    <h2 class="text-center">Sign Up</h2>
-    <form id="signupForm">
-        <div class="mb-3">
-            <label for="signupEmail" class="form-label">Email</label>
-            <input type="email" class="form-control" id="signupEmail" required>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - JK Blog</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <h2 class="text-center">Sign Up</h2>
+            <form id="signupForm">
+                <div class="mb-3">
+                    <label for="signupEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="signupEmail" required>
+                </div>
+                <div class="mb-3">
+                    <label for="signupPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="signupPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+            </form>
+            <div class="text-center mt-3">
+                <a href="../HTML/login.html" class="text-pink">Already have an account? Login</a>
+            </div>
+            <div class="text-center mt-3">
+                <button id="googleSignup" class="btn btn-outline-danger w-100">
+                    <i class="fab fa-google"></i> Sign Up with Google
+                </button>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="signupPassword" class="form-label">Password</label>
-            <input type="password" class="form-control" id="signupPassword" required>
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Sign Up</button>
-    </form>
-    <div class="text-center mt-3">
-        <a href="../HTML/login.html" class="text-pink">Already have an account? Login</a>
     </div>
-    <div class="text-center mt-3">
-        <button id="googleSignup" class="btn btn-outline-danger w-100">
-            <i class="fab fa-google"></i> Sign Up with Google
-        </button>
-    </div>
-</div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+        <script src="../firebase-config.js"></script>
+    <script src="../JS/app.js"></script>
+</body>
+</html>
