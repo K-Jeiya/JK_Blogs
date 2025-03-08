@@ -9,5 +9,13 @@ const firebaseConfig = {
   measurementId: "G-724RCKRZZY"
 };
 
-// Initialize Firebase ONLY HERE
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+console.log("Firebase initialized!"); // Debug line
+
+// Add after initialization
+if (window.location.hostname === "localhost") {
+  console.log("Localhost detected: Firebase auth OK");
+} else {
+  console.log("Production domain:", window.location.hostname);
+}

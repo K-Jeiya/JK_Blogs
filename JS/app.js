@@ -11,7 +11,7 @@ auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
 
 document.addEventListener('DOMContentLoaded', function() {
   // Common redirect function
-  const redirectToHome = () => window.location.href = '/index.html';
+  const redirectToHome = () => window.location.href = '../index.html';
 
   // 1. Email Login
   document.getElementById('loginForm')?.addEventListener('submit', (e) => {
@@ -36,14 +36,15 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // 3. Google Auth Handler
-  const handleGoogleAuth = () => {
-    auth.signInWithPopup(googleProvider)
-      .then(redirectToHome)
-      .catch((error) => {
-        console.error("Google Auth Error:", error);
-        alert('Error: ' + error.message);
-      });
-  };
+  auth.signInWithPopup(googleProvider)
+  .then((userCredential) => {
+    console.log("User:", userCredential.user); // ✅ Debug line
+    redirectToHome();
+  })
+  .catch((error) => {
+    console.error("Error Code:", error.code);  // 🔍 Log error code
+    alert(error.message);
+  });
 
   // Attach Google handlers
   document.getElementById('googleLogin')?.addEventListener('click', handleGoogleAuth);
