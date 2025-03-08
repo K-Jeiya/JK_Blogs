@@ -9,9 +9,5 @@ const firebaseConfig = {
   measurementId: "G-724RCKRZZY"
 };
 
-// Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const googleProvider = new firebase.auth.GoogleAuthProvider();
-// Set persistence
-auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+// Initialize Firebase ONLY HERE
+firebase.initializeApp(firebaseConfig);
