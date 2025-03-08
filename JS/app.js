@@ -1,64 +1,53 @@
-// app.js - Corrected Full Code
+// Initialize Firebase
+const auth = firebase.auth();
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Login with Email/Password
+    // Common function for redirect
+    const redirectToHome = () => {
+        // Use absolute path for GitHub Pages
+        window.location.href = '/index.html'; 
+    };
+
+    // 1. Email Login
     document.getElementById('loginForm')?.addEventListener('submit', (e) => {
         e.preventDefault();
         const email = document.getElementById('loginEmail').value;
         const password = document.getElementById('loginPassword').value;
 
-        firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(() => {
-                alert('Login successful!');
-                window.location.href = './index.html';
-            })
-            .catch((error) => {
-                alert('Error: ' + error.message);
-            });
+        auth.signInWithEmailAndPassword(email, password)
+            .then(redirectToHome)
+            .catch((error) => alert('Error: ' + error.message));
     });
 
-    // 2. Signup with Email/Password
+    // 2. Email Signup
     document.getElementById('signupForm')?.addEventListener('submit', (e) => {
         e.preventDefault();
         const email = document.getElementById('signupEmail').value;
         const password = document.getElementById('signupPassword').value;
 
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then(() => {
-                alert('Account created!');
-                window.location.href = './index.html';
-            })
-            .catch((error) => {
-                alert('Error: ' + error.message);
-            });
+        auth.createUserWithEmailAndPassword(email, password)
+            .then(redirectToHome)
+            .catch((error) => alert('Error: ' + error.message));
     });
 
-    // 3. Google Authentication (Both Login/Signup)
+    // 3. Google Auth
     const handleGoogleAuth = () => {
-        firebase.auth().signInWithPopup(googleProvider)
-            .then(() => {
-                alert('Google login successful!');
-                window.location.href = '../index.html';
-            })
-            .catch((error) => {
-                alert('Error: ' + error.message);
-            });
+        auth.signInWithPopup(googleProvider)
+            .then(redirectToHome)
+            .catch((error) => alert('Error: ' + error.message));
     };
 
-    // Login Page Google Button
+    // Attach handlers
     document.getElementById('googleLogin')?.addEventListener('click', handleGoogleAuth);
-
-    // Signup Page Google Button
     document.getElementById('googleSignup')?.addEventListener('click', handleGoogleAuth);
 
     // 4. Forgot Password
     document.getElementById('forgotPassword')?.addEventListener('click', (e) => {
         e.preventDefault();
         const email = prompt('Enter your email:');
-        
-        if(email) {
-            firebase.auth().sendPasswordResetEmail(email)
-                .then(() => alert('Password reset email sent!'))
-                .catch(error => alert('Error: ' + error.message));
-        }
+        if(email) auth.sendPasswordResetEmail(email)
+            .then(() => alert('Password reset email sent!'))
+            .catch(error => alert('Error: ' + error.message));
     });
 });

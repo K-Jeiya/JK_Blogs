@@ -13,3 +13,5 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
+// Set persistence
+auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
