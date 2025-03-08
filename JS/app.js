@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(() => {
                 alert('Login successful!');
-                window.location.href = '../HTML/index.html';
+                window.location.href = './index.html';
             })
             .catch((error) => {
                 alert('Error: ' + error.message);
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(() => {
                 alert('Account created!');
-                window.location.href = '../HTML/index.html';
+                window.location.href = './index.html';
             })
             .catch((error) => {
                 alert('Error: ' + error.message);
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         firebase.auth().signInWithPopup(googleProvider)
             .then(() => {
                 alert('Google login successful!');
-                window.location.href = '../HTML/index.html';
+                window.location.href = '../index.html';
             })
             .catch((error) => {
                 alert('Error: ' + error.message);
