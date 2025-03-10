@@ -9,7 +9,7 @@ const handleGoogleAuth = () => {
     .then(() => {
       if (window.location.pathname.includes('login') || 
           window.location.pathname.includes('signup')) {
-        window.location.href = '/index.html';
+        window.location.href = '../index.html';
       }
     })
     .catch((error) => {
@@ -24,7 +24,7 @@ const handleGoogleAuth = () => {
 
 const handleLogout = () => {
   auth.signOut()
-    .then(() => window.location.href = '/index.html')
+    .then(() => window.location.href = '../index.html')
     .catch(error => alert(`Logout failed: ${error.message}`));
 };
 
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const email = document.getElementById('loginEmail').value.trim();
     const password = document.getElementById('loginPassword').value.trim();
     auth.signInWithEmailAndPassword(email, password)
-      .then(() => window.location.href = '/index.html')
+      .then(() => window.location.href = '../index.html')
       .catch(error => alert(`Error: ${error.message}`));
   });
 
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     auth.createUserWithEmailAndPassword(email, password)
-      .then(() => window.location.href = '/index.html')
+      .then(() => window.location.href = '../index.html')
       .catch(error => alert(`Error: ${error.message}`));
   });
 
